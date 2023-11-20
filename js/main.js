@@ -1,6 +1,5 @@
 console.log("Loaded.")
 
-// SAFAAAADO
 
 
 
