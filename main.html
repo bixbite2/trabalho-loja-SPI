@@ -5,11 +5,60 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="css/style.css" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 		<script type="text/javascript" src="js/jquery.js"></script>
 	</head>
 	<body>
-		<h1>Bem vindo(a)</h1>
+		<div class="header">
+			<img src="/assets/logo.svg" alt="">
+			<div class="logo-title">Goodreads</div>
+		</div>
+
+		<di class="body">
+			<div class="list" id="">
+				<div class="book">
+					<div class="cover" style="background-image: url(public/livros/hobbit.jpg);"></div>
+					<div class="name">O Hobbit</div>
+					<div class="price">R$ 59,90</div>
+					<div class="button">Comprar</div>
+				</div>
+
+				<div class="book">
+					<div class="cover" style="background-image: url(public/livros/fundacao.png);"></div>
+					<div class="name">Trilogia Fundação</div>
+					<div class="price">R$ 119,90</div>
+					<div class="button">Comprar</div>
+				</div>
+
+				<div class="book">
+					<div class="cover" style="background-image: url(public/livros/1984.jpg);"></div>
+					<div class="name">1984</div>
+					<div class="price">R$ 23,50</div>
+					<div class="button">Comprar</div>
+				</div>
+
+				<div class="book">
+					<div class="cover" style="background-image: url(public/livros/alltomorrows.jpg);"></div>
+					<div class="name">All the Tomorrows</div>
+					<div class="price">R$ 73,55</div>
+					<div class="button">Comprar</div>
+				</div>
+
+				<div class="book">
+					<div class="cover" style="background-image: url(public/livros/hamlet.jpg);"></div>
+					<div class="name">Hamlet</div>
+					<div class="price">R$ 23,55</div>
+					<div class="button">Comprar</div>
+				</div>
+			</div>
+		</di>
+
+		<div class="footer">
+			Feito por <a href="https://github.com/bixbite2"> Bruno dos Santos</a> e <a href="https://github.com/VictorAmaral22">Victor Amaral</a>
+		</div>
 	
+		<script type="text/javascript" src="js/main.js"></script>
 	</body>
-	<script type="text/javascript" src="js/main.js"></script>
 </html>
