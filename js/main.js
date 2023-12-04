@@ -2,17 +2,10 @@ console.log("Loaded.")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+// Como pegar os dados da url
+// let params = new URLSearchParams(document.location.search);
+// let name = params.get("name"); // is the string "Jonathan"
+// let age = parseInt(params.get("age"), 10); // is the number 18
 
 
 
