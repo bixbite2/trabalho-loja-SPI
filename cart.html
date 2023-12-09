@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="pt-BR">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/style.css" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="js/jquery.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<img src="/assets/logo.svg" alt="">
+			<div class="logo-title">Goodreads</div>
+		</div>
+
+
+		<div class="footer">
+			Feito por <a href="https://github.com/bixbite2"> Bruno dos Santos</a> e <a href="https://github.com/VictorAmaral22">Victor Amaral</a>
+		</div>
+	
+		<script type="text/javascript" src="js/main.js"></script>
+		<script>
+			function goToCart (book) {
+				console.log(book)
+				$("<input />").attr("type", "hidden")
+					.attr("name", "book")
+					.attr("value", book)
+					.appendTo("#book-form");
+
+				$("#book-form").submit()
+			}
+		</script>
+	</body>
 </html>
