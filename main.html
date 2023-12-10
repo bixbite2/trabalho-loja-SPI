@@ -18,7 +18,7 @@
 
 		<form action="cart.html" method="get" id="book-form">
 			<div class="body">
-				<div class="list" id="">
+				<div class="list" id="book_list">
 					<div class="book">
 						<div class="cover" style="background-image: url(public/livros/hobbit.jpg);"></div>
 						<div class="name">O Hobbit</div>
@@ -27,7 +27,7 @@
 					</div>
 	
 					<div class="book">
-						<div class="cover" style="background-image: url(public/livros/fundacao.png);"></div>
+						<div class="cover" style="background-image: url(public/livros/fundacao.jpg);"></div>
 						<div class="name">Trilogia Fundação</div>
 						<div class="price">R$ 119,90</div>
 						<button type="button" onclick="goToCart('fundacao')" class="button">Comprar</button>
@@ -41,7 +41,7 @@
 					</div>
 	
 					<div class="book">
-						<div class="cover" style="background-image: url(public/livros/alltomorrows.jpg);"></div>
+						<div class="cover" style="background-image: url(public/livros/tomorrows.jpg);"></div>
 						<div class="name">All the Tomorrows</div>
 						<div class="price">R$ 73,55</div>
 						<button type="button" onclick="goToCart('tomorrows')" class="button">Comprar</button>
@@ -61,7 +61,7 @@
 		<div class="footer">
 			Feito por <a href="https://github.com/bixbite2"> Bruno dos Santos</a> e <a href="https://github.com/VictorAmaral22">Victor Amaral</a>
 		</div>
-	
+		<script type="text/javascript" src="js/functions/pega_livro.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<script>
 			function goToCart (book) {

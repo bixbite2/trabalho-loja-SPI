@@ -4,6 +4,14 @@
     font-family: Inter;
 }
 
+#pix {
+    border: 2px solid black;
+    padding: 2%;
+}
+#credito {
+    border: 2px solid black;
+    padding: 2%;
+}
 .header {
     width: 97%;
     height: 80px;
@@ -44,6 +52,7 @@
     flex-direction: column;
     width: 236px;
     gap: 10px;
+    text-align: right;
 }
 
 .book .cover {
@@ -68,6 +77,22 @@
     font-size: 16px;
     font-weight: 700;
 }
+.button_cart {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    color: #A72608;
+    border: 1px solid #A72608;
+    font-weight: bold;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    cursor: pointer;
+    background-color: transparent;
+
+}
+
 
 .book .button {
     display: flex;

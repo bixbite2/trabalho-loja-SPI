@@ -15,12 +15,47 @@
 			<img src="/assets/logo.svg" alt="">
 			<div class="logo-title">Goodreads</div>
 		</div>
-
-
+		
+		<div class="body" id="cart">
+		
+			<div id="pix">
+				<h1>Pagamento por PIX</h1>
+				<p>Nome do comprador:</p>
+				<input type="text" name="nome" id="nome">
+				<p>CPF do comprador:</p>
+				<input type="text" name="nome" id="nome">
+			</div>
+			<div id="credito">
+				<!--
+				A opção de parcelamento com base no valor do produto selecionado para a
+				compra, da seguinte maneira:
+				a. Um select que exibe até 5 valores de parcelas (1x de R$ XX, …);
+				b. Em até 3x, o valor de cada parcela é sem juros;
+				c. Acima de 3x, exiba o valor de cada parcela com juros de 3% ao mês
+				(exemplo após o enunciado).
+				o Verifique se o número do cartão, a data de validade e o código de segurança
+				estão nos respectivos formatos esperados;
+				o Caso os 4 primeiros números do cartão sejam “1234” exiba ao lado o ícone de
+				uma bandeira de cartão x, caso seja “4321” exiba ao lado o ícone de uma
+				bandeira de cartão y.
+				-->
+				<h1>Pagamento por cartão de crédito</h1>
+				<p>Nome do titular:</p>
+				<input type="text" name="nome" id="nome">
+				<p>Número do cartão:</p>
+				<input type="text" name="nome" id="nome">
+				<p>Validade do cartão:</p>
+				<input type="text" name="nome" id="nome">
+				<p>Código de segurança:</p>
+				<input type="text" name="nome" id="nome">
+			</div>
+		</div>
+		<button type="button" class="button_cart">Finalizar compra</button>
 		<div class="footer">
 			Feito por <a href="https://github.com/bixbite2"> Bruno dos Santos</a> e <a href="https://github.com/VictorAmaral22">Victor Amaral</a>
 		</div>
 	
+		<script type="text/javascript" src="js/functions/pega_livro.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<script>
 			function goToCart (book) {
