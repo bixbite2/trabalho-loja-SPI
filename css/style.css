@@ -4,14 +4,22 @@
     font-family: Inter;
 }
 
-#pix {
-    border: 2px solid black;
-    padding: 2%;
+.payment {
+    border: 1px solid black;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
 }
-#credito {
-    border: 2px solid black;
-    padding: 2%;
+
+.payment input, .payment select {
+    width: 300px;
+    height: 30px;
+    padding-left: 5px;
+    font-size: 16px;
 }
+
 .header {
     width: 97%;
     height: 80px;
@@ -32,7 +40,7 @@
     font-weight: 700;
 }
 
-.body {
+.body, .body-cart {
     display: flex;
     margin-top: 130px;
     width: 94%;
@@ -40,7 +48,13 @@
     padding-right: 3%;
 }
 
-.body .list {
+.body-cart {
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 100px;
+}
+
+.body .list, .body-cart .list {
     display: flex;
     gap: 30px;
     width: 100%;
@@ -120,7 +134,7 @@
     width: 100%;
     background-color: #000;
     color: #fff;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -134,4 +148,35 @@
     margin-left: 5px;
     margin-right: 5px;
     text-decoration: underline;
+}
+
+.confirm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+    button {
+        width: 10%;
+    }
+}
+
+.confirm button:hover {
+    background-color: #A72608;
+    color: #fff;
+    border-color: transparent;
+}
+
+#confirm-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 10%;
+}
+
+#confirm-screen .check {
+    width: 600px;
 }

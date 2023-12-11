@@ -16,46 +16,77 @@
 			<div class="logo-title">Goodreads</div>
 		</div>
 
-		<form action="cart.html" method="get" id="book-form">
-			<div class="body">
-				<div class="list" id="book_list">
-					<div class="book">
-						<div class="cover" style="background-image: url(public/livros/hobbit.jpg);"></div>
-						<div class="name">O Hobbit</div>
-						<div class="price">R$ 59,90</div>
-						<button type="button" onclick="goToCart('hobbit')" class="button">Comprar</button>
-					</div>
-	
-					<div class="book">
-						<div class="cover" style="background-image: url(public/livros/fundacao.jpg);"></div>
-						<div class="name">Trilogia Fundação</div>
-						<div class="price">R$ 119,90</div>
-						<button type="button" onclick="goToCart('fundacao')" class="button">Comprar</button>
-					</div>
-	
-					<div class="book">
-						<div class="cover" style="background-image: url(public/livros/1984.jpg);"></div>
-						<div class="name">1984</div>
-						<div class="price">R$ 23,50</div>
-						<button type="button" onclick="goToCart('1984')" class="button">Comprar</button>
-					</div>
-	
-					<div class="book">
-						<div class="cover" style="background-image: url(public/livros/tomorrows.jpg);"></div>
-						<div class="name">All the Tomorrows</div>
-						<div class="price">R$ 73,55</div>
-						<button type="button" onclick="goToCart('tomorrows')" class="button">Comprar</button>
-					</div>
-	
-					<div class="book">
-						<div class="cover" style="background-image: url(public/livros/hamlet.jpg);"></div>
-						<div class="name">Hamlet</div>
-						<div class="price">R$ 23,55</div>
-						<button type="button" onclick="goToCart('hamlet')" class="button">Comprar</button>
+		<div id="products">
+			<form action="" method="get" id="book-form">
+				<div class="body">
+					<div class="list" id="book_list">
+						<div class="book">
+							<div class="cover" style="background-image: url(public/livros/hobbit.jpg);"></div>
+							<div class="name">O Hobbit</div>
+							<div class="price">R$ 59,90</div>
+							<button type="button" onclick="goToCart('hobbit')" class="button">Comprar</button>
+						</div>
+		
+						<div class="book">
+							<div class="cover" style="background-image: url(public/livros/fundacao.jpg);"></div>
+							<div class="name">Trilogia Fundação</div>
+							<div class="price">R$ 119,90</div>
+							<button type="button" onclick="goToCart('fundacao')" class="button">Comprar</button>
+						</div>
+		
+						<div class="book">
+							<div class="cover" style="background-image: url(public/livros/1984.jpg);"></div>
+							<div class="name">1984</div>
+							<div class="price">R$ 23,50</div>
+							<button type="button" onclick="goToCart('1984')" class="button">Comprar</button>
+						</div>
+		
+						<div class="book">
+							<div class="cover" style="background-image: url(public/livros/tomorrows.jpg);"></div>
+							<div class="name">All the Tomorrows</div>
+							<div class="price">R$ 73,55</div>
+							<button type="button" onclick="goToCart('tomorrows')" class="button">Comprar</button>
+						</div>
+		
+						<div class="book">
+							<div class="cover" style="background-image: url(public/livros/hamlet.jpg);"></div>
+							<div class="name">Hamlet</div>
+							<div class="price">R$ 23,55</div>
+							<button type="button" onclick="goToCart('hamlet')" class="button">Comprar</button>
+						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
+
+		<div id="cart">
+			<form action="" method="post">
+				<div class="body-cart">
+					<div id="product"></div>
+					
+					<div style="display: flex; gap: 10px">
+						<input type="radio" name="payment" id="payment-pix" onclick="selectPayment('pix')" required>
+						<p>PIX</p>
+					</div>
+					<div id="pix" class="payment"></div>
+		
+					<div style="display: flex; gap: 10px">
+						<input type="radio" name="payment" id="payment-credito" onclick="selectPayment('credito')" required>
+						<p>Cartão de crédito</p>
+					</div>
+					<div id="credito" class="payment"></div>
+					<div class="confirm">
+						<button type="button" class="button_cart" onclick="back()">Voltar</button>
+						<button type="button" class="button_cart" onclick="confirmPayment()">Finalizar compra</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div id="confirm-screen">
+			<img class="check" src="/assets/check.gif" alt="">
+			<h2>Pagamento efetuado com sucesso!</h2>
+		</div>
 
 
 		<div class="footer">
@@ -63,15 +94,82 @@
 		</div>
 		<script type="text/javascript" src="js/functions/pega_livro.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		<script src="https://unpkg.com/imask"></script>
 		<script>
-			function goToCart (book) {
-				console.log(book)
-				$("<input />").attr("type", "hidden")
-					.attr("name", "book")
-					.attr("value", book)
-					.appendTo("#book-form");
+			$("#cart").hide()
+			$("#confirm-screen").hide()
+			let book = null
 
-				$("#book-form").submit()
+			function goToCart (id) {
+				book = get_livro_info(id)
+				$("#products").hide()
+				$("#cart").show()
+				let olivro = cria_livro(id)
+				$('#product').append(olivro)
+			}
+
+			function back () {
+				$('#product').empty()
+				$("#products").show()
+				$("#cart").hide()
+			}
+
+			function confirmPayment () {
+				$("#products").hide()
+				$("#cart").hide()
+				$("#confirm-screen").show()
+				
+				setTimeout(() => {
+					$("#products").show()
+					$("#confirm-screen").hide()
+				}, 3000)
+			}
+
+			function selectPayment (type) {
+				if (book){
+					$("#pix").empty()
+					$("#credito").empty()
+					if (type == "pix"){					
+						$("#pix").append(
+							"<p>Nome do comprador:</p>", 
+							'<input type="text" name="nome" id="pix-nome" placeholder="Fulano da Silva" required>', 
+							"<p>CPF do comprador:</p>", 
+							'<input type="text" name="cpf" id="pix-cpf" placeholder="000.000.000-00" required>'
+						)
+						const mask = IMask(document.getElementById('pix-cpf'), { mask: '000.000.000-00' });
+					}
+					if (type == "credito"){
+						let select = '<select name="parcelas" id="credito-parcelas" required>'
+						for (let i = 0; i < 5; i++){
+							if (i+1 < 3){
+								select += `<option value="${i+1}x">${i+1}x sem juros R$ ${(book.price/(i+1)).toFixed(2)}</option>`
+							} else {
+								select += `<option value="${i+1}x">${i+1}x com juros R$ ${((book.price/(i+1))+((book.price/(i+1))*0.3)).toFixed(2)}</option>`
+							}
+						}
+						select += '</ select>'
+	
+						$("#credito").append(
+							'<p>Nome do titular:</p>',
+							'<input type="text" name="nome" id="credito-nome" placeholder="Fulano da Silva" required>',
+							'<p class="error" id="credito-nome-error"></p>',
+							'<p>Número do cartão:</p>',
+							'<input type="text" name="credito" id="credito-num" placeholder="0000 0000 0000 0000" required>',
+							'<p class="error" id="credito-num-error"></p>',
+							'<p>Validade do cartão:</p>',
+							'<input type="text" name="valid" id="credito-valid" placeholder="12/2026" required>',
+							'<p class="error" id="credito-valid-error"></p>',
+							'<p>Código de segurança:</p>',
+							'<input type="text" name="security" id="credito-secure" placeholder="XXX" required>',
+							'<p class="error" id="credito-secure-error"></p>',
+							'<p>Parcelar em:</p>',
+							select,
+						)
+						const mask1 = IMask(document.getElementById('credito-num'), { mask: '0000 0000 0000 0000' });
+						const mask2 = IMask(document.getElementById('credito-valid'), { mask: '00/0000' });
+						const mask3 = IMask(document.getElementById('credito-secure'), { mask: '000' });
+					}
+				}
 			}
 		</script>
 	</body>
