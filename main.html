@@ -60,7 +60,7 @@
 		</div>
 
 		<div id="cart">
-			<form action="" method="post">
+			<form action="" method="post" onsubmit="confirmPayment(event)">
 				<div class="body-cart">
 					<div id="product"></div>
 					
@@ -77,7 +77,7 @@
 					<div id="credito" class="payment"></div>
 					<div class="confirm">
 						<button type="button" class="button_cart" onclick="back()">Voltar</button>
-						<button type="button" class="button_cart" onclick="confirmPayment()">Finalizar compra</button>
+						<button type="submit" class="button_cart">Finalizar compra</button>
 					</div>
 				</div>
 			</form>
@@ -112,20 +112,37 @@
 				$('#product').empty()
 				$("#products").show()
 				$("#cart").hide()
+				$("#payment-pix").prop('checked', false)
+				$("#payment-credito").prop('checked', false)
+				$("#pix").empty()
+				$("#credito").empty()
 			}
 
-			function confirmPayment () {
-				$("#products").hide()
-				$("#cart").hide()
-				$("#confirm-screen").show()
+			function confirmPayment (event) {
+				event.preventDefault()
 				
-				setTimeout(() => {
-					$("#products").show()
-					$("#confirm-screen").hide()
-				}, 3000)
+				if (!$("#payment-pix").is(':checked') && !$("#payment-credito").is(':checked')){
+					alert("Selecione um método de pagamento")
+				} else {
+					$("#products").hide()
+					$("#cart").hide()
+					$("#pix").empty()
+					$("#credito").empty()
+					$("#confirm-screen").show()
+					$('#product').empty()
+					$("#payment-pix").prop('checked', false)
+					$("#payment-credito").prop('checked', false)
+					
+					setTimeout(() => {
+						$("#products").show()
+						$("#confirm-screen").hide()
+					}, 3000)
+				}
+
 			}
 
 			function selectPayment (type) {
+				console.log(book)
 				if (book){
 					$("#pix").empty()
 					$("#credito").empty()
